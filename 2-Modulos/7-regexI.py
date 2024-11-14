@@ -15,7 +15,7 @@ match = re.search(r'.', site)
 print(match)
  
 # Usando a \\ para conseguir buscar a associação com o ponto
-match = re.search(r'\\.', site)
+match = re.search(r'\.', site)
 print(match)
 
 # 3 - Buscando uma lista de caracteres dentro de uma frase []
