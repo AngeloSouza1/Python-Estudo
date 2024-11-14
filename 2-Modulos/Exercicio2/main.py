@@ -14,3 +14,4 @@ tempo = 45  # Você pode alterar o valor para o tempo desejado
 
 # Reiniciar o computador imediatamente
 agendamento_desligamento.reiniciar_computador()
+
