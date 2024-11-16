@@ -46,5 +46,6 @@ filme1.avaliar(8)
 filme1.avaliar(9.5)
 filme1.avaliar(7)
 
+
 # Exibindo informações do filme
 print(filme1)  # Deve mostrar: Filme: Inception, Média de Avaliação: X.XX (3 avaliadores)
