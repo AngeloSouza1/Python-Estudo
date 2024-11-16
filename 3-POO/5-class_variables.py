@@ -26,7 +26,7 @@ class Movie:
         self.evaluators += 1
 
     def average(self):
-        print(f"Média do filme {self.name} é: {self.totalEvaluation / self.evaluators}") 
+        print(f"Média do filme {self.name} é: {self.totalEvaluation / self.evaluators}\n") 
     
         
 movie = Movie("Super Mario", 2023, False, 120)
