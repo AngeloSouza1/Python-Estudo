@@ -1,4 +1,3 @@
 ruby
 python
 javascript
-São Paulo
