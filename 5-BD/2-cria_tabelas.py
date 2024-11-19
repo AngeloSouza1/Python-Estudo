@@ -1,8 +1,7 @@
 import sqlite3
 
-
 # 1 - Conectando no BD
-connection = sqlite3.connect("titles.db")
+connection = sqlite3.connect("movies.db")
 
 # 2 - Criando um cursor
 '''
