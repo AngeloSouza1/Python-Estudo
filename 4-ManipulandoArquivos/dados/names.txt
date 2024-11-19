@@ -1,3 +1,10 @@
-ruby
-python
-javascript
+Python
+JavaScript
+Java
+C#
+Ruby
+PHP
+Swift
+C++
+TypeScript
+Go
