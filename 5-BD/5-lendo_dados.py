@@ -18,7 +18,7 @@ print(data.fetchall())
 
 # 4 - Iterando os Dados
 for row in cursor.execute("SELECT * FROM movies"):
-    print(f"{row}")
+    print(f"{row}\n")
     
 # 5 - Ordenando pelo Score
 print("\\nFilmes Ordenados pelo Score\\n")
