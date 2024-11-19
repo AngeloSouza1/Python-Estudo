@@ -11,8 +11,8 @@ navegar e manipular os do bd.
 cursor = connection.cursor()
 
 # 3 - Solicitando Dados do Usuário
-id = int(input("Informe o id do filme que deseja atualizar\\n"))
-name = input("Nome do Filme\\n")
+id = int(input("Informe o id do filme que deseja atualizar\n"))
+name = input("Nome do Filme\n")
 
 # 4 - Atualizando Dados
 cursor.execute("""
