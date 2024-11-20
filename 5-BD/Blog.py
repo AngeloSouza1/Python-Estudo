@@ -1,6 +1,8 @@
-from Projeto_Blog.conexao_sqlalchemy import Base, engine, session
-from Projeto_Blog.User import User
-from Projeto_Blog.Post import Post
+from conexao_sqlalchemy import Base, engine, session
+from User import User
+from Post import Post
+
+
 
 # Cria as tabelas
 Base.metadata.create_all(engine)
@@ -29,8 +31,9 @@ def add_post():
     title = input('Título: ')
     content = input('Conteúdo: ')
     author_id = input('ID do autor: ')
-    user = session.query(User).
-filter_by(id=author_id).first()
+    
+    # Ajustando quebra de linha na consulta
+    user = session.query(User).filter_by(id=author_id).first()
     if user:
         post = Post(title=title, content=content, author=user)
         session.add(post)
@@ -41,10 +44,14 @@ filter_by(id=author_id).first()
 
 # Função para consultar usuários e seus posts
 def query_users_posts():
-    users = session.query(User).join(User.posts).
-order_by(User.name).all()
+    # Ajustando quebra de linha na consulta
+    users = (
+        session.query(User)
+        .join(User.posts)
+        .order_by(User.name)
+        .all()
+    )
     for user in users:
         print(f'User: {user.name}, Email: {user.email}')
         for post in user.posts:
-            print(f' - Post: {post.title}, 
-Content: {post.content}')
+            print(f' - Post: {post.title}, Content: {post.content}')
