@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite - XYZ Automação</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f7f9fc, #e8eff7);
+            color: #333;
+            line-height: 1.8;
+            font-size: 18px; /* Fonte maior para melhor leitura */
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: left; /* Ajuste do alinhamento */
+        }
+
+        h4 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            font-size: 28px; /* Tamanho maior para destaque */
+            font-weight: bold;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .signature {
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            font-size: 16px;
+            color: #555;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        .contact-info h5 {
+            margin: 5px 0;
+        }
+
+        .image-container {
+            margin-top: 25px;
+            text-align: left; /* Alinhado à esquerda */
+        }
+
+        .image-container img {
+            max-width: 50%; /* Reduzido para 50% da largura do contêiner */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px; /* Rodapé menor */
+            color: #aaa;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h4 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .image-container img {
+                max-width: 70%; /* Ajuste para telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4>Olá, bom dia!</h4>
+        <p>Somos da empresa <span class="highlight">XYZ Automação</span> e estamos expandindo a nossa empresa.</p>
+        <p>Gostaríamos de saber se você tem interesse em participar de uma conversa com a gente.</p>
+        <p>Fico no aguardo do seu retorno.</p>
+        <div class="signature">
+            <p>Atenciosamente,</p>
+            <div class="contact-info">
+                <h5>Dpto RH XYZ Automação</h5>
+                <h5>Fone: (xx) xxxx-xxxx</h5>
+                <h5>Email: <a href="mailto:rh@xyzautomacao.com">rh@xyzautomacao.com</a></h5>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="https://img.freepik.com/fotos-gratis/vista-da-mesa-de-escritorio-com-espaco-de-trabalho-baguncado-e-laptop_23-2150282081.jpg?uid=R22110561&ga=GA1.1.943838052.1724854383&semt=ais_hybrid" alt="Escritório moderno">
+        </div>
+    </div>
+    <footer>
+        © 2024 <a href="#">XYZ Automação</a>. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
