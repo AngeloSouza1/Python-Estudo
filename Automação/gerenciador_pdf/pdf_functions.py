@@ -25,15 +25,26 @@ def split_pdf(pdf_path, output_folder="files"):
                 writer.write(out)
 
 def extract_main_image_from_each_page(pdf_path, output_folder="files"):
+    """
+    Extrai todas as imagens de todas as páginas de um PDF.
+    :param pdf_path: Caminho do arquivo PDF.
+    :param output_folder: Pasta para salvar as imagens extraídas.
+    """
     os.makedirs(output_folder, exist_ok=True)
     pdf_document = fitz.open(pdf_path)
-    for i, page in enumerate(pdf_document):
+
+    for page_index, page in enumerate(pdf_document):
         images = page.get_images(full=True)
-        if images:
-            xref = images[0][0]
+        for image_index, image in enumerate(images):
+            xref = image[0]
             base_image = pdf_document.extract_image(xref)
-            with open(f"{output_folder}/page_{i+1}.{base_image['ext']}", "wb") as img_file:
-                img_file.write(base_image["image"])
+            image_ext = base_image["ext"]
+            image_bytes = base_image["image"]
+            output_path = os.path.join(output_folder, f"page_{page_index+1}_image_{image_index+1}.{image_ext}")
+
+            with open(output_path, "wb") as img_file:
+                img_file.write(image_bytes)
+
 
 def rotate_pdf(pdf_path, page_num, rotation, output_path):
     """

@@ -1,10 +1,14 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
+import sys
 from pdf_functions import (
     get_pdf_metadata, extract_text_from_pdf, split_pdf,
     extract_main_image_from_each_page, rotate_pdf, merge_pdf, convert_img_pdf
 )
+
+
+
 
 # Funções GUI
 def selecionar_arquivo():
