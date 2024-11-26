@@ -69,14 +69,18 @@ def rotate_pdf(pdf_path, page_num:int, rotation:int=90):
         with open(output_filename, "wb") as out:
             writer.write(out)
 
+# Buscando Dados e Metadados de um Arquivo PDF 
 # print(get_pdf_metadata("files/sample.pdf"))
 # print(get_pdf_metadata("files/sample.pdf").title)
 # print(get_pdf_metadata("files/sample.pdf").author)
 # print(extract_text_from_pdf("files/sample.pdf"))
+# Dividindo PDF por página
 # bvsplit_pdf("files/teste.pdf")
+# Dividindo PDF por Página Selecionada
 # get_pdf_upto("files/teste.pdf", 1, 2)
+# Listando PDFs / Merge
 # print(fetch_all_pdf_files("files/"))
 # pdf_list = fetch_all_pdf_files("files/")
 # merge_pdf(pdf_list)
-
+# Rotacionando Página
 rotate_pdf("files/sample.pdf", 0)
