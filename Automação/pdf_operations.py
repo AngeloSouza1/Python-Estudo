@@ -2,6 +2,7 @@ import PyPDF2 as pdf
 from PyPDF2 import PdfReader, PdfWriter, PdfMerger
 import os
 import fitz
+from PIL import Image
 
 def get_pdf_metadata(pdf_path):
     with open(pdf_path, "rb") as f:
@@ -106,6 +107,13 @@ def extract_main_image_from_each_page(pdf_path, output_folder="files"):
         print(f"Imagem principal extraída da página {page_num + 1}: {img_filename}")
 
     print("Extração de imagens concluída.")
+    
+def convert_img_pdf(image_file):
+    my_image = Image.open(image_file)
+    img = my_image.convert("RGB")
+    filename = f"{os.path.splitext(image_file)[0]}.pdf"
+    img.save(filename)
+
 
 # Exemplo de uso
 
@@ -125,5 +133,6 @@ def extract_main_image_from_each_page(pdf_path, output_folder="files"):
 # Rotacionando Página
 # rotate_pdf("files/sample.pdf", 0)
 # Extração de Imagens
-extract_main_image_from_each_page("files/teste1.pdf")
-
+# extract_main_image_from_each_page("files/teste1.pdf")
+# Conversão de Imagem
+convert_img_pdf("files/page1_main_image.png")
