@@ -110,6 +110,7 @@ def extract_main_image_from_each_page(pdf_path, output_folder="files"):
     
 def convert_img_pdf(image_file):
     my_image = Image.open(image_file)
+    # print(my_image)
     img = my_image.convert("RGB")
     filename = f"{os.path.splitext(image_file)[0]}.pdf"
     img.save(filename)
