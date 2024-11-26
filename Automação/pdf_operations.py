@@ -1,6 +1,7 @@
 import PyPDF2 as pdf
 from PyPDF2 import PdfReader, PdfWriter, PdfMerger
 import os
+import fitz
 
 def get_pdf_metadata(pdf_path):
     with open(pdf_path, "rb") as f:
@@ -30,25 +31,25 @@ def split_pdf(pdf_path):
             with open(output_filename, "wb") as out:
                 writer.write(out)
             print(f"PDF criado com o nome: {output_filename}")
-            
-def get_pdf_upto(pdf_path, start_page:int=0,stop_page:int=0):
+
+def get_pdf_upto(pdf_path, start_page: int = 0, stop_page: int = 0):
     with open(pdf_path, "rb") as f:
         reader = PdfReader(f)
         writer = PdfWriter()
         for page_num in range(start_page, stop_page):
             selected_page = reader.pages[page_num]
             writer.add_page(selected_page)
-            filename = os.path.split(pdf_path)[1]
-            output_filename = f"files/{filename}_from_{start_page+1}_to_{stop_page+1}.pdf"
+        filename = os.path.split(pdf_path)[1]
+        output_filename = f"files/{filename}_from_{start_page+1}_to_{stop_page+1}.pdf"
         with open(output_filename, "wb") as out:
             writer.write(out)
 
-def fetch_all_pdf_files(parent_folder:str):
+def fetch_all_pdf_files(parent_folder: str):
     target_files = []
     for path, subdirs, files in os.walk(parent_folder):
         for name in files:
             if name.endswith(".pdf"):
-                target_files.append(os.path.join(path,name))
+                target_files.append(os.path.join(path, name))
     return target_files
 
 def merge_pdf(list_pdfs, output_filename="files/final_pdf.pdf"):
@@ -58,7 +59,7 @@ def merge_pdf(list_pdfs, output_filename="files/final_pdf.pdf"):
             merger.append(file)
         merger.write(f)
 
-def rotate_pdf(pdf_path, page_num:int, rotation:int=90):
+def rotate_pdf(pdf_path, page_num: int, rotation: int = 90):
     with open(pdf_path, "rb") as f:
         reader = PdfReader(f)
         writer = PdfWriter()
@@ -69,7 +70,46 @@ def rotate_pdf(pdf_path, page_num:int, rotation:int=90):
         with open(output_filename, "wb") as out:
             writer.write(out)
 
-# Buscando Dados e Metadados de um Arquivo PDF 
+def extract_main_image_from_each_page(pdf_path, output_folder="files"):
+    """
+    Extrai apenas uma imagem por página do PDF.
+    :param pdf_path: Caminho para o arquivo PDF.
+    :param output_folder: Pasta de saída para salvar as imagens.
+    """
+    # Certifique-se de que a pasta de saída exista
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Abrir o PDF
+    pdf_document = fitz.open(pdf_path)
+
+    for page_num in range(len(pdf_document)):
+        page = pdf_document[page_num]
+        images = page.get_images(full=True)  # Obtem todas as imagens da página
+
+        if not images:
+            print(f"Nenhuma imagem encontrada na página {page_num + 1}.")
+            continue
+
+        # Selecionar apenas a primeira imagem (principal) da página
+        xref = images[0][0]  # Referência da primeira imagem
+        base_image = pdf_document.extract_image(xref)
+        image_bytes = base_image["image"]
+        image_ext = base_image["ext"]  # Extensão da imagem (png, jpeg, etc.)
+
+        # Nome do arquivo de saída
+        img_filename = f"{output_folder}/page{page_num + 1}_main_image.{image_ext}"
+
+        # Salvar a imagem
+        with open(img_filename, "wb") as img_file:
+            img_file.write(image_bytes)
+
+        print(f"Imagem principal extraída da página {page_num + 1}: {img_filename}")
+
+    print("Extração de imagens concluída.")
+
+# Exemplo de uso
+
+#  Buscando Dados e Metadados de um Arquivo PDF 
 # print(get_pdf_metadata("files/sample.pdf"))
 # print(get_pdf_metadata("files/sample.pdf").title)
 # print(get_pdf_metadata("files/sample.pdf").author)
@@ -83,4 +123,7 @@ def rotate_pdf(pdf_path, page_num:int, rotation:int=90):
 # pdf_list = fetch_all_pdf_files("files/")
 # merge_pdf(pdf_list)
 # Rotacionando Página
-rotate_pdf("files/sample.pdf", 0)
+# rotate_pdf("files/sample.pdf", 0)
+# Extração de Imagens
+extract_main_image_from_each_page("files/teste1.pdf")
+
