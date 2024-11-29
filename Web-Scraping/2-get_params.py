@@ -1,6 +1,6 @@
 import requests
 
-url = "<https://jsonplaceholder.typicode.com/posts/>"
+url = "https://jsonplaceholder.typicode.com/posts/"
 
 # Adding a payload
 payload = {"id": [1, 2, 3, 4], "userId":1}
@@ -12,4 +12,4 @@ response = requests.get(url, params=payload)
 response_json = response.json()
 
 for i in response_json:
-    print(i, "\\n")
+    print(i, "\n")
