@@ -38,4 +38,27 @@ print(len(repos_list))
 
 # 4 - Filtrando Resultados
 # print(repos_list[0][2]) # página - repositório
-print(repos_list[0][2]['name']) # página - repositório
+# print(repos_list[0][2]['name']) # página - repositório
+
+
+# 5 - Pegando apenas o nome
+name_repos = []
+for page in repos_list:
+    for repo in page:
+        name_repos.append(repo['name'])
+        
+print(name_repos[:10]) # pega os 10 primeiros repositórios
+print(len(name_repos))
+
+# 6 - Pegando a linguagem dos repositórios
+# print(repos_list[1][1]['language'])
+lang_repos = []
+for page in repos_list:
+    for repo in page:
+        lang_repos.append(repo['language'])
+
+# print(len(lang_repos))
+# print(lang_repos)
+
+# 7 - Contando ocorrências das linguagens
+print(Counter(lang_repos))
