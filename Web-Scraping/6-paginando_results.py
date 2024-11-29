@@ -46,28 +46,28 @@ for page in repos_list:
     for repo in page:
         name_repos.append(repo['name'])
         
-print(name_repos[:10]) # pega os 10 primeiros repositórios
-print(len(name_repos))
+# print(name_repos[:10]) # pega os 10 primeiros repositórios
+# print(len(name_repos))
 
 # 6 - Pegando a linguagem dos repositórios
 # print(repos_list[1][1]['language'])
-lang_repos = []
-for page in repos_list:
-    for repo in page:
-        lang_repos.append(repo['language'])
+# lang_repos = []
+# for page in repos_list:
+#     for repo in page:
+#         lang_repos.append(repo['language'])
 
 # print(len(lang_repos))
 # print(lang_repos)
 
 # 7 - Contando ocorrências das linguagens
-print(Counter(lang_repos))
+# print(Counter(lang_repos))
 
 # 8 - Criando Dataframe
 
 dados_obc = pd.DataFrame()
 dados_obc['repo_name'] = name_repos
 dados_obc['repo_lang'] = lang_repos
-# print(dados_obc)
+print(dados_obc)
 
 # 9 - Exportando para CSV
 dados_obc.to_csv('obc.csv')
