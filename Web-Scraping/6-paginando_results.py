@@ -32,7 +32,7 @@ for page_num in range(1, 3):
         repos_list.append(None)
         print(f"Erro ao buscar página {page_num}: {e}")
 
-print(len(repos_list))
+# print(len(repos_list))
 # print(len(repos_list)) # Primeira página
 # print(len(repos_list[0])) # Na primeira página tem 30 projetos
 
