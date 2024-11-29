@@ -14,26 +14,28 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #000; /* Fundo preto */
-            color: #fff; /* Texto branco */
+            background-color: #000;
+            color: #fff;
+            margin: 0;
         }
 
         .hero {
-            background: linear-gradient(45deg, #d32f2f, #b71c1c);
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
             color: #fff;
-            padding: 3rem 0;
+            padding: 3rem 1rem; /* Reduzi o padding para tornar o banner mais compacto */
             text-align: center;
+            border-bottom: 5px solid #e57373;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Reduzi o tamanho do texto */
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
         }
 
         .hero .btn {
@@ -42,6 +44,7 @@
             font-weight: 700;
             border-radius: 50px;
             padding: 0.75rem 2rem;
+            transition: all 0.3s ease;
         }
 
         .hero .btn:hover {
@@ -51,17 +54,18 @@
 
         .course-card {
             border: 1px solid #333;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 1.5rem;
-            background-color: #1a1a1a; /* Fundo cinza escuro */
+            background-color: #1a1a1a;
+            color: #fff;
         }
 
         .course-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
         }
 
         .course-card .card-header {
@@ -74,6 +78,7 @@
 
         .course-card .card-body {
             padding: 1.5rem;
+            text-align: center;
         }
 
         .course-card .btn {
@@ -83,17 +88,24 @@
             border-radius: 50px;
             padding: 0.5rem 1.5rem;
             color: #fff;
+            transition: background-color 0.3s ease;
         }
 
         .course-card .btn:hover {
             background-color: #b71c1c;
         }
 
+        .course-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e57373;
+        }
+
         footer {
             background-color: #1a1a1a;
             color: #fff;
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem 0;
             margin-top: auto;
         }
 
@@ -112,7 +124,7 @@
 <body>
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Bem-vindo à Python Academy</h1>
+        <h1><i class="fas fa-graduation-cap"></i> Bem-vindo à Python Academy</h1>
         <p>Conquiste seu futuro aprendendo Python com nossos cursos.</p>
         <a href="#cursos" class="btn">Conheça os Cursos</a>
     </section>
@@ -125,6 +137,7 @@
                 <div class="course-card">
                     <div class="card-header">Python Fundamentos</div>
                     <div class="card-body">
+                        <i class="fas fa-code"></i>
                         <p>Tudo que você precisa saber para programar em Python.</p>
                         <a href="#" class="btn btn-block">Inicie por R$50</a>
                     </div>
@@ -135,6 +148,7 @@
                 <div class="course-card">
                     <div class="card-header">Python Automação</div>
                     <div class="card-body">
+                        <i class="fas fa-cogs"></i>
                         <p>Tudo que você precisa saber para automatizar tarefas em Python.</p>
                         <a href="#" class="btn btn-block">Inicie por R$100</a>
                     </div>
@@ -145,6 +159,7 @@
                 <div class="course-card">
                     <div class="card-header">Python Análise de Dados</div>
                     <div class="card-body">
+                        <i class="fas fa-chart-line"></i>
                         <p>Tudo que você precisa saber para analisar dados em Python.</p>
                         <a href="#" class="btn btn-block">Inicie por R$150</a>
                     </div>
@@ -155,6 +170,7 @@
                 <div class="course-card">
                     <div class="card-header">Python Aplicações</div>
                     <div class="card-body">
+                        <i class="fas fa-mobile-alt"></i>
                         <p>Tudo que você precisa saber para desenvolver aplicações em Python.</p>
                         <a href="#" class="btn btn-block">Inicie por R$300</a>
                     </div>
