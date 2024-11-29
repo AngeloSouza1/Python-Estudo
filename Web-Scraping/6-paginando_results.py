@@ -40,7 +40,6 @@ for page_num in range(1, 3):
 # print(repos_list[0][2]) # página - repositório
 # print(repos_list[0][2]['name']) # página - repositório
 
-
 # 5 - Pegando apenas o nome
 name_repos = []
 for page in repos_list:
@@ -62,3 +61,13 @@ for page in repos_list:
 
 # 7 - Contando ocorrências das linguagens
 print(Counter(lang_repos))
+
+# 8 - Criando Dataframe
+
+dados_obc = pd.DataFrame()
+dados_obc['repo_name'] = name_repos
+dados_obc['repo_lang'] = lang_repos
+# print(dados_obc)
+
+# 9 - Exportando para CSV
+dados_obc.to_csv('obc.csv')
