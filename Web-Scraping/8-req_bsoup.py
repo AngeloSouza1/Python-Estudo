@@ -39,4 +39,6 @@ else:
         print(f"  Título : {titulo}")
         print(f"  Local  : {local}")
         print(f"  Link   : {link}")
+        print("") 
         print("-" * 60)
+        print("") 
