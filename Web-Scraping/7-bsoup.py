@@ -7,13 +7,22 @@ with open('pages/index.html', 'r', encoding='utf-8') as file_html:
 # Inicializando o BeautifulSoup
 soup = BeautifulSoup(content, 'lxml')
 
-# Recuperando os títulos dos cursos usando a classe 'card-header'
+# Recuperando os títulos dos cursos
 cursos = soup.find_all('div', class_='card-header')
 
-# Verificando se encontrou elementos
-if not cursos:
-    print("Nenhum curso encontrado.")
+# Recuperando os preços dos cursos
+precos = soup.find_all('a', class_='btn btn-block')
+
+# Criando a lista com títulos e preços
+if not cursos or not precos:
+    print("Nenhum curso ou preço encontrado.")
 else:
-    # Iterando e imprimindo o texto de cada curso
-    for curso in cursos:
-        print(curso.text.strip())
+    cursos_e_precos = []
+    for curso, preco in zip(cursos, precos):
+        titulo = curso.text.strip()
+        valor = preco.text.strip().replace("Inicie por ", "")
+        cursos_e_precos.append({"curso": titulo, "preco": valor})
+
+    # Imprimindo os resultados
+    for item in cursos_e_precos:
+        print(f"Curso: {item['curso']} - Preço: {item['preco']}")
