@@ -70,16 +70,16 @@ try:
         browser.get(url_page)
         
     # 8 - Recuperando informações
-    divs = browser.find_elements(
-        By.XPATH,
-        '//div[@class="yuRUbf"]'
-    )
-    for div in divs:
-        name = div.find_element(By.TAG_NAME, 'h3')
-        link = div.find_element(By.TAG_NAME, 'a')
-        result = "%s,%s" %(name.text, link.get_attribute('href'))
-        print(result)
-        list_results.append(result)    
+        divs = browser.find_elements(
+            By.XPATH,
+            '//div[@class="yuRUbf"]'
+        )
+        for div in divs:
+            name = div.find_element(By.TAG_NAME, 'h3')
+            link = div.find_element(By.TAG_NAME, 'a')
+            result = "%s,%s" %(name.text, link.get_attribute('href'))
+            print(result)
+            list_results.append(result)    
         
 
 finally:
