@@ -85,6 +85,9 @@ try:
     with open('files/results_term.txt', 'w', encoding='utf-8') as file:
         for result in list_results:
             file.write("%s\n" % result)
+            
+    
+    print(f'Foram encontrados {len(list_results)} resultados na pesquisa')        
 
 finally:
     # Garante o fechamento do navegador
