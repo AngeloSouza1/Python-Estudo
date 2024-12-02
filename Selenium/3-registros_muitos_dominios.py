@@ -29,7 +29,7 @@ for domain in domains:
     
 # 4 - Buscando Informações
     results = browser.find_elements(By.TAG_NAME, 'strong')
-    text = f'Domínio {results[1].text} está {results[2].text}\n'
+    text = f'Domínio {results[1].text} : {results[2].text}\n'
     print(text)
     file.write(text)
 
