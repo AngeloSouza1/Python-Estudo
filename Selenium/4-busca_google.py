@@ -80,7 +80,14 @@ try:
             result = "%s,%s" %(name.text, link.get_attribute('href'))
             print(result)
             list_results.append(result)    
-        
+# 9 - Salvando em arquivo txt
+with open('files/results_term.txt', 'w', encoding='utf-8') as file:
+    for result in list_results:
+        file.write("%s\\n" %result)        
+
+
+
+
 
 finally:
     # Garante o fechamento do navegador
