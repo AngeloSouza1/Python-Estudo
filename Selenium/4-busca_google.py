@@ -69,7 +69,7 @@ try:
         current_page += 1
         browser.get(url_page)
         
-    # 8 - Recuperando informações
+        # 8 - Recuperando informações
         divs = browser.find_elements(
             By.XPATH,
             '//div[@class="yuRUbf"]'
@@ -77,17 +77,14 @@ try:
         for div in divs:
             name = div.find_element(By.TAG_NAME, 'h3')
             link = div.find_element(By.TAG_NAME, 'a')
-            result = "%s,%s" %(name.text, link.get_attribute('href'))
+            result = "%s,%s" % (name.text, link.get_attribute('href'))
             print(result)
             list_results.append(result)    
-# 9 - Salvando em arquivo txt
-with open('files/results_term.txt', 'w', encoding='utf-8') as file:
-    for result in list_results:
-        file.write("%s\\n" %result)        
 
-
-
-
+    # 9 - Salvando em arquivo txt
+    with open('files/results_term.txt', 'w', encoding='utf-8') as file:
+        for result in list_results:
+            file.write("%s\n" % result)
 
 finally:
     # Garante o fechamento do navegador
