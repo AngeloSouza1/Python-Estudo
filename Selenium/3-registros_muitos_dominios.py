@@ -16,7 +16,7 @@ domains = [
     'pythonbootcamp.com'
 ]
 
-file = open('domains.txt', 'w', encoding='utf-8')
+file = open('files/domains.txt', 'w', encoding='utf-8')
 
 # 3 - Manipulando elementos
 for domain in domains:
