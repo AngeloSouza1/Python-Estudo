@@ -28,6 +28,15 @@ try:
     # Salvando captura de tela
     browser.save_screenshot('files/dominio.png')
 
+
+    # 3 - Buscando informações
+    results = browser.find_elements(By.TAG_NAME, 'strong')
+    # import pdb
+    # pdb.set_trace()
+    print(f'Domínio {results[1].text} está {results[2].text}')
+
+
+
 finally:
     # Encerra o navegador
     browser.quit()
