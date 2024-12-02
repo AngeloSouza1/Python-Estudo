@@ -32,9 +32,17 @@ try:
         geckodriver_path="/usr/local/bin/geckodriver",  # Ajuste o caminho para o Geckodriver, se necessário
         headless=False  # Defina como True para executar em modo headless
     )
-
     # Exibe os resultados
     print(f"Foram encontrados: {result}")
+    
+    # 6 - Retornando o Número de Páginas
+    qtd_results = int(result.split('Aproximadamente ')[1].split(' resultados')[0].replace('.', ''))
+    tot_pages = qtd_results / 10
+
+    # Melhorando a formatação do print
+    print(f"Total de páginas estimadas: {tot_pages:,.0f}".replace(",", "."))
+
+
 finally:
     # Garante o fechamento do navegador
     if browser:
