@@ -9,5 +9,5 @@ browser.get('http://www.amazon.com.br')
 
 # 2 - Acessando elementos numa página
 elem = browser.find_element(By.ID, 'twotabsearchtextbox')
-elem.send_keys('ps5')
+elem.send_keys('Alexa')
 elem.send_keys(Keys.ENTER)
