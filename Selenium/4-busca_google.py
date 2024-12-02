@@ -1,16 +1,24 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
 import time
 from selenium_results_extractor import extract_total_results_with_selenium
 
 # 1 - Termo de pesquisa
 term = input('Digite o que deseja pesquisar:\n')
 
-# 2 - Iniciando o Driver
+# Configurando o User-Agent no Firefox
+options = Options()
+options.set_preference(
+    "general.useragent.override", 
+    "Mozilla/5.0 (X11; Linux x86_64; rv:115.0) Gecko/20100101 Firefox/115.0"
+)
+
+# 2 - Iniciando o Driver com o User-Agent configurado
 browser = None  # Inicializamos o navegador como None para garantir o fechamento
 try:
-    browser = webdriver.Firefox()
+    browser = webdriver.Firefox(options=options)
     browser.get('https://www.google.com.br/')
 
     # 3 - Encontrando o elemento
@@ -54,17 +62,25 @@ try:
     while current_page <= 10:
         if not current_page == 0:
             url_page = url_page.replace(
-                "start=%s" %start,
-                "start=%s" %(start + 10),
+                "start=%s" % start,
+                "start=%s" % (start + 10),
             )
             start += 10
         current_page += 1
         browser.get(url_page)
-
-
-
-
-
+        
+    # 8 - Recuperando informações
+    divs = browser.find_elements(
+        By.XPATH,
+        '//div[@class="yuRUbf"]'
+    )
+    for div in divs:
+        name = div.find_element(By.TAG_NAME, 'h3')
+        link = div.find_element(By.TAG_NAME, 'a')
+        result = "%s,%s" %(name.text, link.get_attribute('href'))
+        print(result)
+        list_results.append(result)    
+        
 
 finally:
     # Garante o fechamento do navegador
