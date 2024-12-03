@@ -46,7 +46,7 @@ def plot_cloud(wordcloud):
     plt.show()
 
 # Verificar e criar a máscara personalizada
-mask_path = os.path.join("data", "upvote.png")
+mask_path = os.path.join("data", "star_mask.png")
 if os.path.exists(mask_path):
     print("Carregando máscara personalizada.")
     mascara = np.array(Image.open(mask_path))
@@ -61,8 +61,8 @@ else:
 
 # Gerar a WordCloud
 wordcloud = WordCloud(
-    width=3000,
-    height=2000,
+    width=4000,
+    height=3000,
     random_state=1,
     background_color='blue',
     colormap='Pastel1',
@@ -72,4 +72,5 @@ wordcloud = WordCloud(
 ).generate(texto)
 
 # Exibir a WordCloud
+
 plot_cloud(wordcloud)
