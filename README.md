@@ -1,2 +1,3 @@
 Estudo pyton
-![2024-12-03_15-21](https://github.com/user-attachments/assets/13abc2fa-743a-4555-a4a8-64f2c9e603ec)
+
+![Webp net-resizeimage](https://github.com/user-attachments/assets/5a215f49-ae28-427e-8dcc-3245e2b05b32)
