@@ -31,15 +31,31 @@ print(len(items))
 for item in items:
     title = item.find_element(By.TAG_NAME, 'h2').text
     price = ""
-
+    link = item.find_element(
+        By.CLASS_NAME,
+        'a-link-normal'
+    ).get_attribute('href')
+    img = ""
+    
     try:
         price = item.find_element(
             By.CLASS_NAME,
             'a-price'
-        ).text.replace('\n', '.')
+        ).text.replace('\\n', '.')
     except:
         pass    
-   
+    
+    try:
+        img = item.find_element(
+            By.CLASS_NAME,
+            's-image'
+        ).get_attribute('src')
+    except:
+        pass
     
     print(f"Título: {title}")
     print(f"Preço: {price}")
+    print(f"Link: {link}")
+    print(f"Image: {img}")
+    
+browser.quit()
