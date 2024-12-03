@@ -12,8 +12,8 @@ import numpy as np
 
 # 1 - Importando Artigo da Internet
 g = Goose()
-# url = '<https://blog.geekhunter.com.br/pretensao-salarial-disparidade-generos/>'
-url = 'https://olhardigital.com.br/2023/08/08/seguranca/google-chrome-vai-atualizar-sistema-mais-vezes-para-evitar-brechas-de-seguranca/'
+url = 'https://blog.geekhunter.com.br/pretensao-salarial-disparidade-generos/'
+# url = 'https://olhardigital.com.br/2023/08/08/seguranca/google-chrome-vai-atualizar-sistema-mais-vezes-para-evitar-brechas-de-seguranca/'
 artigo = g.extract(url)
 
 
@@ -59,3 +59,29 @@ portuguese_stops = set(stopwords.words('portuguese'))
 palavras = [palavra for palavra in word_tokens if palavra.lower() not in portuguese_stops]
 print(palavras)
 print(len(palavras))
+
+# 3 - Aplicando Análise Textual II
+fdist = FreqDist(palavras)
+# print(fdist.most_common(10))
+
+novas_palavras = [palavra for palavra in palavras if palavra.isalnum()]
+fdist = FreqDist(novas_palavras)
+print(fdist.most_common(10))
+
+def plot_cloud(wordcloud):
+    plt.figure(figsize=(40,30))
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.show()
+    
+wordcloud = WordCloud(
+    width = 3000,
+    height = 2000,
+    random_state = 1,
+    background_color = 'navy',
+    colormap = 'rainbow',
+    collocations = False,
+    stopwords = STOPWORDS
+).generate(" ".join(novas_palavras))
+
+plot_cloud(wordcloud)
