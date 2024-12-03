@@ -3,6 +3,16 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 import json
+ 
+with open('files/data_amazon.json', 'w') as f:
+    json.dump([], f)
+    
+def write_json(new_data, filename='files/data_amazon.json'):
+    with open(filename, 'r+') as file:
+        file_data = json.load(file)
+        file_data.append(new_data)
+        file.seek(0)
+        json.dump(file_data, file, indent=4)
 
 # 1- Utilização do WebDriver
 browser = webdriver.Firefox()
@@ -43,7 +53,7 @@ while not isNextDisabled:
             price = item.find_element(
                 By.CLASS_NAME,
                 'a-price'
-            ).text.replace('\n', '.')
+            ).text.replace('\\n', '.')
         except:
             pass    
         
@@ -60,7 +70,14 @@ while not isNextDisabled:
         print(f"Link: {link}")
         print(f"Image: {img}")
         
-   
+        write_json(
+            {
+                "title": title,
+                "price": price,
+                "link": link,
+                "image": img
+            }
+        )
     
     try:
         next_btn = browser.find_element(
