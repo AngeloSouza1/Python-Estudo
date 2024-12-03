@@ -8,7 +8,7 @@ print(langs_dict)
 text = 'Estamos estudando Processamento de Linguagem Natural'
 translated = GoogleTranslator(
     source = 'pt',
-    target = 'el'
+    target = 'en'
 ).translate(text=text)
 print(translated)
 
