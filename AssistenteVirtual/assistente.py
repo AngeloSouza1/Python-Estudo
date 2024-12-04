@@ -5,6 +5,9 @@ import sys
 import time
 import funcoes_so
 import os
+import funcoes_noticias
+os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
+os.environ["SDL_AUDIODRIVER"] = "alsa"
 
 def cria_audio(audio, mensagem):
     """
@@ -61,6 +64,8 @@ def executa_comandos(acao):
         funcoes_so.desliga_computador_meia_hora()
     elif 'cancelar desligamento' in acao:
         funcoes_so.cancela_desligamento()
+    elif 'notícias' in acao:
+        cria_audio('mensagem.mp3', funcoes_noticias.ultima_noticias())
 
 
 def main():
