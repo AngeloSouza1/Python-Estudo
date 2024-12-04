@@ -3,7 +3,8 @@ import pygame
 import speech_recognition as sr
 import sys
 import time
-
+import funcoes_so
+import os
 
 def cria_audio(audio, mensagem):
     """
@@ -48,16 +49,18 @@ def monitora_audio():
         return None
 
 
+    
 def executa_comandos(acao):
-    """
-    Executa comandos baseados no texto reconhecido.
-    :param acao: Texto com o comando a ser executado.
-    """
     if 'fechar assistente' in acao:
-        cria_audio("despedida.mp3", "Assistente sendo encerrado. Até mais!")
         sys.exit()
-    elif 'python' in acao:
-        cria_audio("python.mp3", "Python é uma linguagem de programação.")
+    elif 'horas' in acao:
+        cria_audio('mensagem.mp3',funcoes_so.verifica_hora())
+    elif 'desligar computador' in acao and 'uma hora' in acao:
+        funcoes_so.desliga_computador_uma_hora()
+    elif 'desligar computador' in acao and 'meia hora' in acao:
+        funcoes_so.desliga_computador_meia_hora()
+    elif 'cancelar desligamento' in acao:
+        funcoes_so.cancela_desligamento()
 
 
 def main():
