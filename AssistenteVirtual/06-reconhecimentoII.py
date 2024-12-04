@@ -25,7 +25,7 @@ def cria_audio(audio, mensagem):
         time.sleep(0.3)  # Aguarda a reprodução terminar
 
 
-def gravar_audio(nome_arquivo="gravacao.wav", duracao=5, taxa_amostragem=44100):
+def gravar_audio(nome_arquivo="gravacao.wav", duracao=10, taxa_amostragem=44100):
     """
     Grava o áudio do microfone e salva como arquivo WAV.
     :param nome_arquivo: Nome do arquivo de saída.
@@ -50,7 +50,7 @@ def gravar_audio(nome_arquivo="gravacao.wav", duracao=5, taxa_amostragem=44100):
 cria_audio('wellcome.mp3', 'Olá. Vou reconhecer a sua voz')
 
 # Gravar áudio
-arquivo_audio = gravar_audio(duracao=5)
+arquivo_audio = gravar_audio(duracao=10)
 
 # Configurar o reconhecedor de fala
 recon = sr.Recognizer()
@@ -63,6 +63,7 @@ try:
         # Reconhecer a fala
         frase = recon.recognize_google(audio, language='pt-BR')
         print(f"Você disse: {frase}")
+        cria_audio('mensagem.mp3', frase)
 except sr.UnknownValueError:
     print("Não foi possível entender o áudio.")
 except sr.RequestError as e:
