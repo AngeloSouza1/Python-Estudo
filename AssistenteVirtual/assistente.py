@@ -6,6 +6,8 @@ import time
 import funcoes_so
 import os
 import funcoes_noticias
+import funcoes_moeda
+
 os.environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
 os.environ["SDL_AUDIODRIVER"] = "alsa"
 
@@ -66,7 +68,12 @@ def executa_comandos(acao):
         funcoes_so.cancela_desligamento()
     elif 'notícias' in acao:
         cria_audio('mensagem.mp3', funcoes_noticias.ultima_noticias())
-
+    elif 'cotação' in acao and 'dólar' in acao:
+        cria_audio('mensagem.mp3', funcoes_moeda.cotacao_moeda('Dólar'))
+    elif 'cotação' in acao and 'euro' in acao:
+        cria_audio('mensagem.mp3', funcoes_moeda.cotacao_moeda('Euro'))
+    elif 'cotação' in acao and 'bitcoin' in acao:
+        cria_audio('mensagem.mp3', funcoes_moeda.cotacao_moeda('Bitcoin'))
 
 def main():
     """
