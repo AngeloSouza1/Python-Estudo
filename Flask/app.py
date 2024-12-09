@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from lista_filmes import filmes  # Importa a lista formatada de filmes
+from lista_filmes import resultado_filmes  # Importa a função para buscar filmes dinamicamente
 
 app = Flask(__name__)
 
@@ -36,10 +36,14 @@ def diario():
     )
 
 @app.route('/filmes')
-def lista_filmes():
+@app.route('/filmes/<tipo>')
+def lista_filmes(tipo='Populares'):
+    # Busca filmes dinamicamente com base no tipo
+    filmes = resultado_filmes(tipo)
     return render_template(
-        "filmes.html", 
-        filmes=filmes  # Passa a lista formatada para o template
+        "filmes.html",
+        filmes=filmes,
+        tipo=tipo  # Passa o tipo para o template
     )
 
 if __name__ == "__main__":
