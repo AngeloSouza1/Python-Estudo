@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from lista_filmes import dados_json
 
 app = Flask(__name__)
 
@@ -31,4 +32,11 @@ def diario():
     return render_template(
         "sobre.html",
         registros=registros  
+    )
+    
+@app.route('/filmes')
+def lista_filmes():
+    return render_template(
+        "filmes.html", 
+        filmes=dados_json
     )
