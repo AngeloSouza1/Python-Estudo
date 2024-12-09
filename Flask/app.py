@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request
-from lista_filmes import dados_json
+from lista_filmes import filmes  # Importa a lista formatada de filmes
 
 app = Flask(__name__)
 
 conteudos = []
 registros = []
+
 # localhost:5000/
 @app.route('/', methods=["GET", "POST"])
 def principal():
@@ -21,7 +22,7 @@ def principal():
 def diario():
     if request.method == "POST":
         if request.form.get("aluno") and request.form.get("nota"):
-            aluno = request.form.get("aluno") 
+            aluno = request.form.get("aluno")
             nota = request.form.get("nota")
             registros.append(
                 {
@@ -31,12 +32,15 @@ def diario():
             )
     return render_template(
         "sobre.html",
-        registros=registros  
+        registros=registros
     )
-    
+
 @app.route('/filmes')
 def lista_filmes():
     return render_template(
         "filmes.html", 
-        filmes=dados_json
+        filmes=filmes  # Passa a lista formatada para o template
     )
+
+if __name__ == "__main__":
+    app.run(debug=True)
