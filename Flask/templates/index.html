@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste Flask</title>
+    <title>Notas da Turma</title>
 </head>
 <body>
-    <h2 style="text-align: center;">Integrando HTML ao Flask</h2>
+    <h2 style="text-align: center;">Notas dos Alunos</h2>
     <hr>
-    Lista de Conteúdos:
-    <ol>
-        {% for conteudo in conteudos %}
-        <li>{{conteudo}}</li>
+        {% for aluno, nota in diario.items() %}
+        <details>
+            <summary>{{aluno}}</summary>
+            <p>{{nota}}</p>
+        </details>
         {% endfor %}
-    </ol>
-   
 </body>
 </html>
