@@ -1,17 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+conteudos = []
 # localhost:5000/
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def principal():
-    conteudos = [
-        'Manipulação de Dados',
-        'Herança e Templates',
-        'Integração de APIs',
-        'Banco de Dados',
-        'Deploy da App'
-    ]
+    if request.method == "POST":
+        if request.form.get("conteudo"):
+            conteudos.append(request.form.get("conteudo"))
+            
     return render_template(
         "index.html",
         conteudos=conteudos
