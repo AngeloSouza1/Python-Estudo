@@ -8,7 +8,11 @@
 <body>
     <h2 style="text-align: center;">Integrando HTML ao Flask</h2>
     <hr>
-    Lista de Conteúdos:
+    <form action="{{url_for('principal')}}" method="POST">
+        <label>Conteúdo</label>
+        <input type="text" name="conteudo">
+        <button>Adicionar</button>
+    </form>
     <ol>
         {% for conteudo in conteudos %}
         <li>{{conteudo}}</li>
