@@ -5,16 +5,16 @@ app = Flask(__name__)
 # localhost:5000/
 @app.route('/')
 def principal():
-    conteudo1 = 'Manipulação de Dados'
-    conteudo2 = 'Herança e Templates'
-    conteudo3 = 'Integração de APIs'
-    conteudo4 = 'Banco de Dados'
+    conteudos = [
+        'Manipulação de Dados',
+        'Herança e Templates',
+        'Integração de APIs',
+        'Banco de Dados',
+        'Deploy da App'
+    ]
     return render_template(
         "index.html",
-        conteudo1=conteudo1,
-        conteudo2=conteudo2,
-        conteudo3=conteudo3,
-        conteudo4=conteudo4
+        conteudos=conteudos
     )
 
 @app.route('/sobre')
