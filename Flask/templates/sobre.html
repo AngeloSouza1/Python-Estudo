@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notas da Turma</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block conteudo %}
     <h2 style="text-align: center;">Notas dos Alunos</h2>
     <hr>
     <form action="{{url_for('diario')}}" method="POST">
@@ -21,5 +15,4 @@
             <p>{{registro.nota}}</p>
         </details>
         {% endfor %}
-</body>
-</html>
+{% endblock %}
