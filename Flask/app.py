@@ -1,7 +1,14 @@
 from flask import Flask, render_template, request
 from lista_filmes import resultado_filmes  # Importa a função para buscar filmes dinamicamente
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///livros.sqlite3'
+
+db = SQLAlchemy()
+db.init_app(app)
+
 
 conteudos = []
 registros = []
@@ -45,6 +52,14 @@ def lista_filmes(tipo='Populares'):
         filmes=filmes,
         tipo=tipo  # Passa o tipo para o template
     )
+    
+    
+@app.route('/livros')
+def lista_livros():
+    return render_template(
+        "livros.html", 
+        livros=livro.query.all()
+    )    
 
 if __name__ == "__main__":
     app.run(debug=True)
