@@ -1,5 +1,5 @@
-from projeto import app
-from flask import render_template, request
+from projeto import app, db
+from flask import render_template, request, redirect, url_for
 from projeto.lista_filmes import resultado_filmes
 from projeto.livro import livro
 
@@ -53,3 +53,20 @@ def lista_livros():
         "livros.html", 
         livros=livro.query.all()
     )    
+
+@app.route('/add_livro', methods=["GET", "POST"])
+def adiciona_livro():
+    nome = request.form.get('nome')
+    descricao = request.form.get('descricao')
+    valor = request.form.get('valor')
+    
+    if request.method == 'POST':
+        livro_add = livro(
+            nome,
+            descricao,
+            valor
+        )
+        db.session.add(livro_add)
+        db.session.commit()
+        return redirect(url_for('lista_livros'))
+    return render_template("novo_livro.html")
