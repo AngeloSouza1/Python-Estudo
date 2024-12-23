@@ -70,3 +70,33 @@ def adiciona_livro():
         db.session.commit()
         return redirect(url_for('lista_livros'))
     return render_template("novo_livro.html")
+
+
+@app.route('/<int:id>/atualiza_livro', methods=["GET", "POST"])
+def atualiza_livro(id):
+    # select * from livro where id = 2
+    livro_bd = livro.query.filter_by(id=id).first()
+    if request.method == 'POST':
+        nome = request.form['nome']
+        descricao = request.form['descricao']
+        valor = request.form['valor']
+        
+        livro.query.filter_by(id=id).update({
+            "nome": nome,
+            "descricao": descricao,
+            "valor": valor
+        })
+        
+        db.session.commit()
+        return redirect(url_for('lista_livros'))
+    return render_template(
+        "atualiza_livro.html",
+        livro=livro_bd
+    )
+
+@app.route('/<int:id>/remove_livro')
+def remove_livro(id):
+    livro_bd = livro.query.filter_by(id=id).first()
+    db.session.delete(livro_bd)
+    db.session.commit()
+    return redirect(url_for('lista_livros'))

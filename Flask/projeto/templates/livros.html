@@ -11,6 +11,7 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Valor</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,10 @@
                 <td>{{livro.nome}}</td>
                 <td>{{livro.descricao}}</td>
                 <td>{{livro.valor}}</td>
+                <td>
+                    <a href="{{livro.id}}/atualiza_livro" class="btn btn-secondary btn-xs">Editar</a>
+                    <a href="{{livro.id}}/remove_livro" class="btn btn-danger btn-xs" onclick="return confirm('Deseja excluir esse registro?')">Excluir</a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
