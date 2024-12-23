@@ -1,14 +1,7 @@
-from flask import Flask, render_template, request
-from projeto.lista_filmes import resultado_filmes  # Importa a função para buscar filmes dinamicamente
-from flask_sqlalchemy import SQLAlchemy
-from livro import livro
-
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///livros.sqlite3'
-db = SQLAlchemy()
-db.init_app(app)
-
+from projeto import app
+from flask import render_template, request
+from projeto.lista_filmes import resultado_filmes
+from projeto.livro import livro
 
 conteudos = []
 registros = []
@@ -60,6 +53,3 @@ def lista_livros():
         "livros.html", 
         livros=livro.query.all()
     )    
-
-if __name__ == "__main__":
-    app.run(debug=True)

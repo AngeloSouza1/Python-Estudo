@@ -32,6 +32,9 @@
                             <li><a class="dropdown-item" href="{{ url_for('lista_filmes', tipo='2010') }}">2010</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint == 'diario' %}active{% endif %}" href="{{ url_for('lista_livros') }}">Livros</a>
+                    </li>
                 </ul>
             </div>
         </div>
