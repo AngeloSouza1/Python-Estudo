@@ -49,10 +49,17 @@ def lista_filmes(tipo='Populares'):
     
 @app.route('/livros')
 def lista_livros():
+    page = request.args.get('page', 1, type=int)
+    per_page = 2
+    todos_livros = livro.query.paginate(
+        page=page, 
+        per_page=per_page
+        )
     return render_template(
         "livros.html", 
-        livros=livro.query.all()
-    )    
+        livros=todos_livros
+    )
+        
 
 @app.route('/add_livro', methods=["GET", "POST"])
 def adiciona_livro():
