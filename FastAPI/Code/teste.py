@@ -36,3 +36,12 @@ def lista_jogadores():
 @app.get('/busca-jogador-id/{jogador_id}')
 def busca_jogador_id(jogador_id: int):
     return jogadores[jogador_id]
+
+# Query Parameter
+# <http://127.0.0.1:8000/busca_nome?nome='Dudu'>
+@app.get('/busca-jogador-nome')
+def busca_jogador_nome(nome: str):
+    for jogador_id in jogadores:
+        if jogadores[jogador_id]['nome'] == nome:
+            return jogadores[jogador_id]
+    return {"Dados": "Não foi encontrado nenhum jogador"}
