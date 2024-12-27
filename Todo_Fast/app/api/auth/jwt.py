@@ -3,10 +3,15 @@ from fastapi.security import OAuth2PasswordRequestForm
 from typing import Any
 from app.services.user_service import UserService
 from app.core.security import create_access_token, create_refresh_token
+from app.schemas.auth_schema import TokenSchema
+
 
 auth_router = APIRouter()
 
-@auth_router.post('/login')
+@auth_router.post('/login',
+                  summary='Cria Access Token e Refresh Token',
+                  response_model=TokenSchema
+                  )
 async def login(data: OAuth2PasswordRequestForm = Depends()) -> Any:
     usuario = await UserService.authenticate(
         email = data.username,
