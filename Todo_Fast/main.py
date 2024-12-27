@@ -4,6 +4,7 @@ from app.core.config import settings
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.models.user_model import User
+from app.models.task_model import Task
 from app.api.api_v1.router import router
 
 
@@ -20,7 +21,8 @@ async def app_init():
     await init_beanie(
         database = cliente_db,
         document_models = [
-            User
+            User,
+            Task
         ]
     )
     
