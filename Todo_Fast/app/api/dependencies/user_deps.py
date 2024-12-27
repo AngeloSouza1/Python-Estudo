@@ -3,7 +3,7 @@ from fastapi import Depends, HTTPException, status
 from app.models.user_model import User
 from jose import jwt
 from app.core.config import settings
-from schemas.auth_schema import TokenPayload
+from app.schemas.auth_schema import TokenPayload
 from datetime import datetime
 from pydantic import ValidationError
 from app.services.user_service import UserService
@@ -33,3 +33,13 @@ async def get_current_user(token: str = Depends(oauth_reusavel)) -> User:
             details='Erro na validação do token',
             headers={'WWW-Authenticate': 'Bearer'}
         )
+    
+    user = await UserService.get_user_by_id(token_data.sub)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            details='Não foi possível encontrar o usuário',
+            headers={'WWW-Authenticate': 'Bearer'}
+        )
+        
+    return user
