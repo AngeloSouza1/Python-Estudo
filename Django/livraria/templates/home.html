@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class="text-center">Lista de Jogos</h2>
-<hr>
+<div class="col-md-6 offset-md-3">
+    <h2 class="text-center">Login</h2>
+    <hr>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="inputEmail" class="form-label">Usuário</label>
+            <input type="text" name="usuario" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword" class="form-label">Senha</label>
+            <input type="password" name="senha" class="form-control" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>
+
 {% endblock %}
