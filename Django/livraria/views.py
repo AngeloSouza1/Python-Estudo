@@ -4,7 +4,6 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Teste Home')
+    # return HttpResponse('Teste Home')
+    return render(request, 'home.html')
 
-def sobre(request):
-    return HttpResponse('Teste Sobre')
