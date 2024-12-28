@@ -5,6 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 
+
 def home(request):
     if request.method == "POST":
         username = request.POST['usuario']
@@ -17,18 +18,18 @@ def home(request):
         )
         if user is not None:
             login(request, user)
-            messages.success(request, 
-                "Login realizado com sucesso!")
+            messages.success(request, "Login realizado com sucesso!")
             return redirect('home')
         else:
-            messages.error(request, 
-                "Erro na autenticação. Tente novamente!")
+            messages.error(request, "Erro na autenticação. Tente novamente!")
             return redirect('home')
     else:
         return render(request, 'home.html')
 
-def login_user(request):
-    pass
-
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, "Você fez o logout com sucesso!")
+    return redirect('home')
+
+def register_user(request):
+    return render(request, 'register.html')
