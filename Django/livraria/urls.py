@@ -3,5 +3,5 @@ from django.http import HttpResponse
 from livraria.views import home
 
 urlpatterns = [
-    path('', home)
+    path('', home, name='home')
 ]
