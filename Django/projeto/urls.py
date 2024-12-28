@@ -1,13 +1,9 @@
-from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.http import HttpResponse
+from django.contrib import admin
 
-def my_view(request):
-    # pass
-    # return HTTP Response
-    return HttpResponse('Teste Sobre')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sobre/', my_view)
+    path('', include('livraria.urls'))
 ]
