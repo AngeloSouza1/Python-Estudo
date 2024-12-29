@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, AddBookForm
 from .models import Book
 
 def home(request):
@@ -67,4 +67,26 @@ def book_delete(request,id):
     else:
         messages.error(request, "Você precisa estar logado para acessar essa página!")
         return redirect('home')
+    
+def book_add(request):
+    # Corrige o nome do atributo para is_authenticated
+    if not request.user.is_authenticated:
+        messages.error(request, "Você precisa estar logado para adicionar um livro!")
+        return redirect('home')  # Redireciona se o usuário não estiver autenticado
+
+    # Cria o formulário usando o POST ou inicializa vazio
+    form = AddBookForm(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Livro adicionado com sucesso!")
+            return redirect('home')  # Redireciona após salvar com sucesso
+
+    # Renderiza o template com o formulário
+    return render(request, 'add_book.html', {'form': form})
+    
+    
+
+
     
