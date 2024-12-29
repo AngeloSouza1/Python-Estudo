@@ -3,7 +3,13 @@
 
 <div class="col-md-6 offset-md-3">
     {% if user.is_authenticated %}
-    <h2 class="text-center">Hello World</h2>
+    <h2 class="text-center">Lista de Livros</h2>
+    <hr>
+    {% if books %}
+        {% for book in books %}
+            {{book}}</br>
+        {% endfor %}
+    {% endif %}
     {% else %}
     <h2 class="text-center">Login</h2>
     <hr>
