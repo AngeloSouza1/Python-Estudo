@@ -58,3 +58,13 @@ def book_detail(request, id):
         messages.error(request, "Você precisa estar logado para acessar essa página!")
         return redirect('home')
 
+def book_delete(request,id):
+    if request.user.is_authenticated:
+        book = Book.objects.get(id=id)
+        book.delete()
+        messages.success(request, "Livro deletado com sucesso!")
+        return redirect('home')
+    else:
+        messages.error(request, "Você precisa estar logado para acessar essa página!")
+        return redirect('home')
+    
