@@ -85,7 +85,23 @@ def book_add(request):
 
     # Renderiza o template com o formulário
     return render(request, 'add_book.html', {'form': form})
-    
+
+def book_update(request, id):
+    if request.user.is_authenticated:
+        book = Book.objects.get(id=id)
+        form = AddBookForm(request.POST or None, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Livro atualizado com sucesso!")
+            return redirect('home')
+        return render(request, 'update_book.html',{'form':form})
+    else:
+        messages.error(request, "Você precisa estar logado para atualizar um livro!")
+        return redirect('home')
+        
+       
+
+   
     
 
 
